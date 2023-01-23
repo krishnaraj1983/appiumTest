@@ -3,6 +3,7 @@ package appiumpoc;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,6 +22,12 @@ public class FestivalsTest {
 
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
+		
+        
+        String apkFilePath = "/src/test/resources/app-debug.apk";
+        
+        String path = System.getProperty("user.dir")+apkFilePath;
+        
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("deviceName", "Galaxy S21 Ultra 5G");
 		caps.setCapability("udid", "R5CR214D45J");
@@ -31,6 +38,7 @@ public class FestivalsTest {
 		caps.setCapability("appPackage", "com.energyaustralia.codingtestsample");
 
 		caps.setCapability("appActivity", "com.energyaustralia.codingtestsample.MainActivity");
+		//caps.setCapability("app", path);
 		
 		URL url = new URL("http://127.0.0.1:4723/wd/hub");
 		driver = new AppiumDriver<MobileElement>(url,caps);
@@ -56,6 +64,9 @@ public class FestivalsTest {
 		list.add("Wild Antelope");
 		list.add("Youkrane");
 		list.add("Yanke East");
+		
+		
+		
 
 		List<MobileElement> tableView =  driver.findElementsByXPath("//android.widget.ListView[@resource-id='com.energyaustralia.codingtestsample:id/festival_list']//android.widget.TextView");
 		for(int i=0;i<tableView.size();i++) {
